@@ -7,7 +7,7 @@ import CreatePost from '../Pages/CreatePost'
 import ViewPost from '../Pages/ViewPost'
 import ViewMore from '../Pages/ViewMore'
 import PageAuth from '../Pages/PageAuth'
-
+import Back from '../Pages/Back'
 
 
 
@@ -34,6 +34,9 @@ function MainRoutes() {
            </Route>
            <Route path="/auth">
                <PageAuth/>
+           </Route>
+           <Route path="/back">
+               <Back/>
            </Route>
          
            
