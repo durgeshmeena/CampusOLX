@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 
+app.use(express.json());
+const router = express.Router();
 
 
 app.get("/api", (req, res) => {
