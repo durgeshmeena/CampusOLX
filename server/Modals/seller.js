@@ -7,11 +7,8 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    passwordHash: {
-      type: String,
-      required: true,
-    },
-    username: {
+ 
+    name: {
       type: String,
       required: true,
     },
@@ -20,7 +17,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+
 );
 const User = mongoose.model("User", userSchema);
 module.exports = User;

@@ -24,6 +24,17 @@ const productSchema = mongoose.Schema(
         contentType:String
     
     },
+
+    seller:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'seller'
+  
+  },
+  approv:{
+    type:bool,
+    required: true,
+
+},
   },
   {
     timestamps: true,
