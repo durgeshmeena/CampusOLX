@@ -1,11 +1,20 @@
 import React, { useState } from "react";
+
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import { loginRequest } from "../authConfig";
 import { PageLayout } from "../Components/PageLayout";
 import { ProfileData } from "../Components/ProfileData";
 import { callMsGraph } from "../graph";
 import Button from "react-bootstrap/Button";
-import Sell from "../Components/Sell/Sell"
+import Sell from "../Components/Sell/Sell";
+import Product from "../Components/Product/Product";
+import {
+    MDBInput,
+    MDBCol,
+    MDBRow,
+    MDBCheckbox,
+    MDBBtn
+  } from 'mdb-react-ui-kit';
 
 
 
@@ -39,7 +48,17 @@ const ProfileContent = () => {
                 <Button variant="secondary" onClick={RequestProfileData}>Request Profile Information</Button>
             }
             <hr></hr>
-            <Sell/>
+
+            <MDBRow around>
+                <MDBCol size='4'>
+                    <Sell/>
+                </MDBCol>
+
+                <MDBCol size='4'>
+                    <Product/>
+                </MDBCol>
+            </MDBRow>       
+            
         </>
     );
 };
