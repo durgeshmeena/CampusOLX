@@ -3,9 +3,7 @@ const dotenv = require('dotenv')
 
 dotenv.config();
 const mongoURI=  process.env.MONGO_URI  // create .env file storing your mongoURI secrete
-// console.log(mongoURI);
 const {password, cluster, dbname } =  process.env;
-// console.log(password, cluster, dbname);
 
 const InitiateMongoServer = async()=>{
     try{
