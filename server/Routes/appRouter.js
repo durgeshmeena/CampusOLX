@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { createSeller } = require("../Controllers/sellerController");
-const { addProduct } = require("../Controllers/productController");
-
+const { addProduct, upload } = require("../Controllers/productController");
 
 
 
@@ -12,7 +11,7 @@ router.get("/api", (req, res) => {
 
 router.post("/api/create/seller", createSeller);
 
-router.post("/api/add/product", addProduct);
+router.post("/api/add/product", upload.single('image') ,addProduct);
 
 
 module.exports = router;  

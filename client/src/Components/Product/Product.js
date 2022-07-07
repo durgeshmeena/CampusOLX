@@ -1,7 +1,7 @@
 import React, { useState, Component } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Category from "../Category/Category";
+
 
 
 import * as mdb from 'mdb-react-ui-kit';
@@ -9,65 +9,68 @@ import * as mdb from 'mdb-react-ui-kit';
 export default function Product() {
 
     
-    const [product, setproduct] = useState({
+    const [product, setProduct] = useState({
         name: "",
         category: "",
         price: "",
         description: "",
-        file: "",
     
     });
 
-    // const [file, setFile] = useState({
-    //     data: "",
-    //     contentType: ""
-    // });
+    const [file, setFile] = useState(null);
 
     const [data2, setData] = useState(null);
 
     let name, value;
     const handleInput = (e) => {
-        console.log(product);
         name = e.target.name;
         value = e.target.value;
 
-        setproduct({...product, [name]:value});
+        setProduct({...product, [name]:value});
+        console.log(product);
     }
 
     const handleFile = (e) => {
-        console.log(e.target.files[0]);
-        setproduct({...product, file:e.target.files[0]});
+        const file = e.target.files[0];
+        console.log(file);
+        if(file.size > 10000000){
+            window.alert("File size cannot exceed more than 8MB");
+            setFile(null);
+        }
+        else{
+            setFile(file);
+        }
+            
+        
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(product);
-        const { name,category, price, desciption,file } = product;
+        const { name,category, price, description} = product;
+        if( !name || !category || !price || !description || !file){
+            window.alert("Please fill all the fields");
+        }
+        else {
 
-        const res = await fetch("/api/add/product", {
-            method: "POST",
-            //headers for sending the file
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "Accept": "application/json"
-            },
-            body: new FormData(product)
-        })
-        const data = await res.json();
-        console.log(data);
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('category', category);
+            formData.append('price', price);
+            formData.append('description', description);
+            formData.append('image', file);
+            
 
+            const res = await fetch("/api/add/product", {
+                method: "POST",
+                body: formData
+            })
+            const data = await res.json();
+            console.log(data);
 
-        //     body: JSON.stringify({
-        //         name,category, price, desciption,file
-        //     })
-        // })
-        // const data = await res.json();
-        // console.log(data);
-
-        // .then((res) => res.json())
-        // .then((dataS) => setData(dataS.message));
-        
-        setData(data2.message);
+            
+            setData(data.message);
+        }
 
 
     }
@@ -78,13 +81,20 @@ export default function Product() {
     return (
         <div className="d-lg-inline-flex">
             <form method="POST" className="register-form">
-                <mdb.MDBInput name="name" className='mb-4' id='form1Example1'  label='Name' 
+                <mdb.MDBInput name="name" className='mb-4' id='form1Example1'  label='Product Name' 
                     onChange={handleInput}
                 />
                 
-                <div  className='mb-4'>
-                < Category name="category" />
-                </div>
+                
+
+                <mdb.MDBInput list ="category" name="category" className="mb-4" label="Product Category" autoComplete='off' onChange={handleInput}/>
+                    <datalist id="category">
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Books">Books</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Others">Others</option>
+                    </datalist>
            
 
 
@@ -100,13 +110,13 @@ export default function Product() {
                 
 
                 <div style={{ width: "22rem" }}>
-                    <mdb.MDBFile name="file" className='mb-4' id='customFile' 
+                    <mdb.MDBFile name="file" className='mb-4' id='customFile' accept="image/x-png,image/jpeg,image/gif"
                         onChange={handleFile}
                     />
                 </div>
 
                 <br/>
-                <img src={product.file ? URL.createObjectURL(product.file) : ""}  alt="product" className="img-fluid" />
+                <img src={file ? URL.createObjectURL(file) : ""}  alt="product" className="img-fluid" />
 
                 <mdb.MDBBtn type='submit' name="seller" onClick={handleSubmit} block>
                     Create Product
