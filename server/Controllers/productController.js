@@ -5,9 +5,14 @@ const multer = require('multer');
 // storing image in mongoDB using multer
 
 
+
+const pathName = path.join(__dirname, '../public/uploads'); 
+
+
+
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
-        cb(null, './public/upload');
+        cb(null, pathName);
     }
     ,
     filename:(req, file, cb)=>{
@@ -18,11 +23,16 @@ const storage = multer.diskStorage({
 )
 
 const upload = multer({storage:storage});
-module.exports.upload = upload;
+
 
 const addProduct = async (req, res)=>{
-    // const {name, category, description, file} = req.body;
-    console.log(req.body);
+    const {name, category, price, description} = req.body;
+    console.log(name, category, price, description);
+    // console.log(req.body);
+    // console.log(req.file);
+    console.log("request recieved");
     res.json({message: "product added successfully"});
 }
+
+module.exports = { addProduct, upload };
 
