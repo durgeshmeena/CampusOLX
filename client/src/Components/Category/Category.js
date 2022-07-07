@@ -1,24 +1,19 @@
 import React from 'react';
-import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink } from 'mdb-react-ui-kit';
+import {Form, Select} from 'react-bootstrap';
+import { MDBInput, MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDropdownLink } from 'mdb-react-ui-kit';
 
 export default function Category() {
   return (
+    <>  
+    <MDBInput list ="category" name="category" className="mb-4" placeholder="Select Category" autoComplete='off'/>
+    <datalist id="category">
+        <option value="Electronics">Electronics</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Books">Books</option>
+        <option value="Sports">Sports</option>
+        <option value="Others">Others</option>
+    </datalist>
 
-    <MDBDropdown >
-      <MDBDropdownToggle tag='a' className='btn text-dark col-12 mx-auto' color ='light' >
-        Category
-      </MDBDropdownToggle>
-      <MDBDropdownMenu className='col-18 mx-2'>
-        <MDBDropdownItem>
-          <MDBDropdownLink href="#">Action</MDBDropdownLink>
-        </MDBDropdownItem>
-        <MDBDropdownItem>
-          <MDBDropdownLink href="#">Another action</MDBDropdownLink>
-        </MDBDropdownItem>
-        <MDBDropdownItem>
-          <MDBDropdownLink href="#">Something else here</MDBDropdownLink>
-        </MDBDropdownItem>
-      </MDBDropdownMenu>
-    </MDBDropdown>
+    </>
   );
 }

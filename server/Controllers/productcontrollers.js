@@ -16,3 +16,13 @@ const storage = multer.diskStorage({
     }
 }
 )
+
+const upload = multer({storage:storage});
+module.exports.upload = upload;
+
+const addProduct = async (req, res)=>{
+    // const {name, category, description, file} = req.body;
+    console.log(req.body);
+    res.json({message: "product added successfully"});
+}
+
