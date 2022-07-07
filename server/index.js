@@ -13,7 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(router);
 
 
-// InitiateMongoServer();
 
 InitiateMongoServer()
 .then(()=>{
@@ -26,19 +25,7 @@ InitiateMongoServer()
 });
 
 
-app.use(express.json());
-const router = express.Router();
 
-
-
-
-
-// app.post("/api/create/seller", (req, res) => {
-//     // const { name, email, mobile, otherInfo } = req.body;
-//     console.log(req.body);
-//     res.json({ message: "Reached" });
-  
-//   });
   
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
