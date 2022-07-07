@@ -1,24 +1,43 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
+const sellerSchema = new mongoose.Schema(
   {
-    email: {
+
+    // using own _id in place of mongoose's _id
+    _id: {
       type: String,
       required: true,
-      unique: true,
+      primaryKey: true
     },
- 
+
     name: {
       type: String,
       required: true,
     },
-    phone: {
+ 
+    email: {
+      type: String,
+      required: true,
+    },
+
+    mobile: {
       type: Number,
       required: true,
     },
-  },
+
+    otherInfo: {
+      type: String,
+      required: true,
+    },
+
+    date: { 
+      type: Date, 
+      default: Date.now 
+    },
+
+  }
 
 );
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const Seller = mongoose.model("seller", sellerSchema);
+module.exports = Seller;
 

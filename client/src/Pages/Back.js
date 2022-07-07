@@ -1,6 +1,6 @@
+
 import React from "react";
-// import logo from "./logo.svg";
-// import "./App.css";
+
 
 function Back() {
   const [data, setData] = React.useState(null);
@@ -8,15 +8,12 @@ function Back() {
   React.useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
-      .then((data) => setData(data.message));
+      .then((dataS) => setData(dataS.message));
   }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <p>{!data ? "Loading..." : data}</p>
-      </header>
     </div>
   );
 }

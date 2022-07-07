@@ -5,21 +5,22 @@
   "private": true,
   "proxy": "http://localhost:5000/",
   "dependencies": {
+    "@azure/msal-browser": "^2.15.0",
+    "@azure/msal-react": "^1.0.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "web-vitals": "^1.1.2",
-    "@azure/msal-browser": "^2.15.0",
-    "@azure/msal-react": "^1.0.1",
     "bootstrap": "^4.5.3",
     "firebase": "^9.8.4",
     "jquery": "^3.5.1",
+    "mdb-react-ui-kit": "^4.0.0",
     "popper.js": "^1.16.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.6.5",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^4.0.2"
+    "react-scripts": "^4.0.2",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

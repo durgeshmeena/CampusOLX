@@ -1,17 +1,9 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved.
- * Licensed under the MIT License.
- */
-
 import { LogLevel } from "@azure/msal-browser";
 
-/**
- 
-    
-*/
+
 export const msalConfig = {
     auth: {
-        clientId:  "9bb35b68-1f25-45b3-a649-506c02de0bcf", //"9a7aaf85-af29-4b59-acba-41b884c8be7d",
+        clientId:  "9bb35b68-1f25-45b3-a649-506c02de0bcf",
         authority: "https://login.microsoftonline.com/850aa78d-94e1-4bc6-9cf3-8c11b530701c",
         redirectUri: "http://localhost:3000"
     },
