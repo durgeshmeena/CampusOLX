@@ -29,8 +29,8 @@ const productSchema = new mongoose.Schema(
       ref:'seller'
     },
     approved:{
-      type:bool,
-      required: true,
+      type:Boolean,
+      default:false
     },
   },
   

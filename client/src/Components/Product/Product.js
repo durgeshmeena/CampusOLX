@@ -2,14 +2,16 @@ import React, { useState, Component } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-
+import { useMsal } from "@azure/msal-react";
 
 import * as mdb from 'mdb-react-ui-kit';
 
 export default function Product() {
 
+    const { accounts } = useMsal();
     
     const [product, setProduct] = useState({
+        seller:accounts[0].homeAccountId.split('.')[0],
         name: "",
         category: "",
         price: "",

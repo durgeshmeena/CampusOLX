@@ -8,6 +8,7 @@ import { callMsGraph } from "../graph";
 import Button from "react-bootstrap/Button";
 import Sell from "../Components/Sell/Sell";
 import Product from "../Components/Product/Product";
+import ProductImages from "../Components/ProductImages/ProductImages";
 import {
     MDBInput,
     MDBCol,
@@ -57,7 +58,10 @@ const ProfileContent = () => {
                 <MDBCol size='4'>
                     <Product/>
                 </MDBCol>
-            </MDBRow>       
+            </MDBRow>  
+            <hr></hr>
+            
+            <ProductImages/>     
             
         </>
     );
