@@ -19,7 +19,7 @@ InitiateMongoServer()
   const db = mongoose.connection;
   db.on("error", console.error.bind(console, "connection error: "));
   if(db.readyState){
-    console.log("connection was successful");
+    console.log("connection was successful ");
   }
     
 });
