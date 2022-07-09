@@ -4,15 +4,29 @@ const Product = require("../Modals/Product");
 // function for fetching all products
 const getAllProducts = async (req, res) => {
 
-
     try {
         const products = await Product.find();
-        // console.log(products);
-        res.json(products);
-    } catch (err) {
-        res.json({ message: err });
+        
+        if(products.length === 0){
+            res.json({message:"No products found", products:[]});
+        }
+        else{
+            // console.log(products[0].image);
+        }
+
+        res.json({ message: "Products fetched successfully", products});
+        
+        
+        // res.json({ message: "Products fetched successfully", products });
+        
     }
-    res.json({ message: "Hello from Durga and Monu server!" });
+    catch (err) {
+        console.log(err);
+        res.json({ message: err, products: [] });
+    }
+
+
+
 }
 
 module.exports = { getAllProducts };

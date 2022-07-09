@@ -2,22 +2,49 @@ import React, {useState, useEffect} from "react"
 
 
 export default function ProductImages() {
-    const [data, setData] = React.useState(null);
+    const [products, setProducts] = useState(null);
 
-    useEffect(() => {
-      fetch("/api/get/images")
-        .then((res) => res.json())
-        .then((dataS) => setData(dataS));
-        console.log(data);
+    useEffect( async () => {
+      const res =  await fetch("/api/get/images")
+      const data = await res.json();
+      setProducts(data.products);
+      // console.log(data.products);
+      console.log(data.message);    
     }, []);
+
+    const createImage = (product) => {
+      // console.log(product);
+      const imgData = product.image.data.data;
+      const base64ImageString = Buffer.from(imgData, 'binary').toString('base64')
+      // console.log(base64ImageString);
+      const imgSrc = `data:image/png;base64,${base64ImageString}`;
+
+      const imgWidth = {
+        width: "20rem",
+      }
+
+      return <img src={imgSrc} alt="product" className="img-fluid" style={imgWidth} />
+    }
   
     return (
 
       <div className="ProductImages">
         <h1>ProductImages</h1>
-          { data && data.map((product)=>{
-          <p>{product.name}</p>    
-        }) }
+        {
+          products && products.map((product, index) => {
+            return (
+              <div key={index}>
+                <p>Name: {product.name}</p>  
+                <p>Price: {product.price}</p>
+                <p>Description: {product.description}</p>
+                
+                
+                {createImage(product)}
+                
+              </div>
+            )
+          })
+        }
       </div>
     );
     // const [images, setImages] = useState(null);
@@ -31,18 +58,4 @@ export default function ProductImages() {
     // }, []);
 
   
-
-
-    // return (
-    //     <div>
-    //         <h1>ProductImages</h1>
-            
-    //     </div>
-    // )
 }
-
-
-
-
-
-{/* <img src={file ? URL.createObjectURL(file) : ""}  alt="product" className="img-fluid" /> */}
