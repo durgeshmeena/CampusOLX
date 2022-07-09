@@ -91,11 +91,11 @@ export default function Product() {
 
                 <mdb.MDBInput list ="category" name="category" className="mb-4" label="Product Category" autoComplete='off' onChange={handleInput}/>
                     <datalist id="category">
+                        <option value="Stationary">Stationary</option>
                         <option value="Electronics">Electronics</option>
-                        <option value="Fashion">Fashion</option>
-                        <option value="Books">Books</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Others">Others</option>
+                        <option value="Musical Instruments">Musical Instruments</option>
+                        <option value="Cycles">Cycles</option>
+                        <option value="Other Accessories">Other Accessories</option>
                     </datalist>
            
 

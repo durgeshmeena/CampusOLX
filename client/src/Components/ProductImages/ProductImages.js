@@ -8,7 +8,7 @@ export default function ProductImages() {
       const res =  await fetch("/api/get/images")
       const data = await res.json();
       setProducts(data.products);
-      // console.log(data.products);
+      console.log(data.products);
       console.log(data.message);    
     }, []);
 
@@ -17,13 +17,13 @@ export default function ProductImages() {
       const imgData = product.image.data.data;
       const base64ImageString = Buffer.from(imgData, 'binary').toString('base64')
       // console.log(base64ImageString);
-      const imgSrc = `data:image/png;base64,${base64ImageString}`;
+      const imgSrc = `data:${product.image.contentType};base64,${base64ImageString}`;
 
-      const imgWidth = {
-        width: "20rem",
-      }
+      // const imgWidth = {
+      //   // width: "20rem",
+      // }
 
-      return <img src={imgSrc} alt="product" className="img-fluid" style={imgWidth} />
+      return <img src={imgSrc} alt="product" className="img-fluid" width="200rem"  />
     }
   
     return (

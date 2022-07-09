@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const router = require("./Routes/appRouter");
 const InitiateMongoServer = require('./config/db');
+const routerAdminBro = require('./adminPanel/adminBro')
 
 
 const PORT = process.env.PORT || 5000;
@@ -20,6 +21,7 @@ InitiateMongoServer()
   db.on("error", console.error.bind(console, "connection error: "));
   if(db.readyState){
     console.log("connection was successful ");
+    app.use('/admin', routerAdminBro);
   }
     
 });
