@@ -9,6 +9,7 @@ import ViewMore from '../Pages/ViewMore'
 import PageAuth from '../Pages/PageAuth'
 import Back from '../Pages/Back'
 import Admin from '../Pages/Admin'
+import Chat from '../Components/Chat/Chat'
 
 
 function MainRoutes() {
@@ -41,6 +42,9 @@ function MainRoutes() {
            <Route path="/admn">
                <Admin/>
            </Route>
+            <Route path="/chat">
+                <Chat/>
+            </Route>
          
            
 
