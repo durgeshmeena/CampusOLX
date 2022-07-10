@@ -10,9 +10,7 @@ const getAllProducts = async (req, res) => {
         if(products.length === 0){
             res.json({message:"No products found", products:[]});
         }
-        else{
-            // console.log(products[0].image);
-        }
+        
 
         res.json({ message: "Products fetched successfully", products});
         
