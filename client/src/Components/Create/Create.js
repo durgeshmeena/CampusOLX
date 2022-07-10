@@ -3,11 +3,12 @@ import "./Create.css";
 import Header from "../Header/Header";
 import { Firebase } from "../../firebase/config";
 import { AuthContext } from "../../contextStore/AuthContext";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import GoLoading from "../Loading/GoLoading";
 const Create = () => {
   const { user } = useContext(AuthContext);
-  const history = useHistory();
+  const history = useNavigate();
   let [name, setName] = useState("");
   let [category, setCategory] = useState("");
   let [price, setPrice] = useState("");

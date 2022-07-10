@@ -15,46 +15,49 @@ const InboxContainer = () => {
         email: accounts[0].username 
     });
   
-    useEffect( async() => {   
+    useEffect(() => {   
   
-        Talk.ready.then(() => {
+		async function readyTalky() {
+			Talk.ready.then(() => {
 
-          console.log("Talk is ready");
-          console.log("user:", user);
-          var me = new Talk.User({
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            photoUrl: "https://avatars.githubusercontent.com/u/58581435?s=40&v=4",
-            welcomeMessage: "Hey there! How are you? :-)",
-            role: "booker"
-          });
-          
-          window.talkSession = new Talk.Session({
-            appId: "taWaWLjI",
-            me: me
-          });
-          
-          var other = new Talk.User({
-            id: parseInt(Math.random()*500000).toString(),
-            name: "Monu",
-            email: "demo@talkjs.com",
-            photoUrl: "https://avatars.githubusercontent.com/u/57959076?v=4",
-            welcomeMessage: "Hey, how can I help?",
-            role: "booker"
-          });
-    
-          var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
-          conversation.setParticipant(me);
-          conversation.setParticipant(other);
-          conversation.setAttributes({
-            subject: "This is a testing conversation"
-          });
-          
-          var inbox = talkSession.createInbox({selected: conversation});
-          inbox.mount(talkjsContainer.current);
-        }); 
-      
+				console.log("Talk is ready");
+				console.log("user:", user);
+				var me = new Talk.User({
+					id: user.id,
+					name: user.name,
+					email: user.email,
+					photoUrl: "https://avatars.githubusercontent.com/u/58581435?s=40&v=4",
+					welcomeMessage: "Hey there! How are you? :-)",
+					role: "booker"
+				});
+				
+				window.talkSession = new Talk.Session({
+					appId: "taWaWLjI",
+					me: me
+				});
+				
+				var other = new Talk.User({
+					id: parseInt(Math.random()*500000).toString(),
+					name: "Monu Kumar",
+					email: "demo@talkjs.com",
+					photoUrl: "https://avatars.githubusercontent.com/u/57959076?v=4",
+					welcomeMessage: "Hey, how can I help?",
+					role: "booker"
+				});
+
+				var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
+					conversation.setParticipant(me);
+					conversation.setParticipant(other);
+					conversation.setAttributes({
+					subject: "This is a testing conversation"
+				});
+				
+				var inbox = talkSession.createInbox({selected: conversation});
+				inbox.mount(talkjsContainer.current);
+			}); 
+		}
+
+    	readyTalky();
       
     }, []);
   

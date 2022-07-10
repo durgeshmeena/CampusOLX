@@ -68,9 +68,9 @@ function App() {
           <ContextAllPost>
             <ContextPost>
                 <MainRoutes>
-                <PageLayout>
-                    <MainContent />
-                </PageLayout>
+                    <PageLayout>
+                        <MainContent />
+                    </PageLayout>
                 </MainRoutes>
             </ContextPost>
           </ContextAllPost>

@@ -1,5 +1,6 @@
 import React, { useContext,useState } from "react";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { AllPostContext } from "../../contextStore/AllPostContext";
 import { PostContext } from "../../contextStore/PostContext";
 import "./Header.css";
@@ -15,7 +16,7 @@ import Search from "../Search/Search";
 function Header() {
   const{allPost}=useContext(AllPostContext)
   const{setPostContent}=useContext(PostContext)
-  const history = useHistory();
+  const history = useNavigate();
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const handleFilter = (event) => {

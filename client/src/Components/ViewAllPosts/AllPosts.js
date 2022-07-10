@@ -1,5 +1,6 @@
 import React, { useContext,useState } from "react";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
+// import { useNavigate } from "react-router-dom";
 import { AllPostContext } from "../../contextStore/AllPostContext";
 import Pagination from "../Pagination/Pagination";
 import PostCards from "../PostCards/PostCards";
@@ -16,7 +17,7 @@ function AllPosts() {
   // });
   
   let length = allPost.length; //if user refresh the whole page context will be empty so we want to redirect the user to the home page
-  const history = useHistory();
+  const history = useNavigate();
 
   //pagination logic and implementation will start here
   let [currentPage,setCurrentPage]=useState(1)

@@ -1,9 +1,6 @@
 import React, { useState, Component } from "react";
-import { NavLink, useHistory } from "react-router-dom";
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
-import { loginRequest } from "../../authConfig";
-import { callMsGraph } from "../../graph";
-import Button from "react-bootstrap/Button";
+
 
 
 import {

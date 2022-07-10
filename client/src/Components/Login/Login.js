@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {useHistory} from "react-router-dom";
+// import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { Firebase } from "../../firebase/config";
 import Logo from "../../olx-logo.png";
 import RoundLoading from "../Loading/RoundLoading";
@@ -10,7 +11,7 @@ function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [loading,setLoading]=useState(false)
-  const history = useHistory()
+  const history = useNavigate()
   const handleSubmit = (e) => {
     setLoading(true)
     e.preventDefault();

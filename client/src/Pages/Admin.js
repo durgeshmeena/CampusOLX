@@ -13,13 +13,16 @@ export default function Admin() {
         height: '45rem',
     }
 
-    useEffect( async () => {
-        const adminStatus = await fetch("/admin");
-        const status = await adminStatus.status;
-        if(status === 200){
-            
-            setSrc("http://localhost:5000/admin");
+    useEffect(() => {
+        async function statAdmin() {
+            const adminStatus = await fetch("/admin");
+            const status = await adminStatus.status;
+            if(status === 200){
+                
+                setSrc("http://localhost:5000/admin");
+            }
         }
+        statAdmin();
 
     } , []);
 

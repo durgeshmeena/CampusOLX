@@ -3,12 +3,13 @@ import {AllPostContext} from "..//../contextStore/AllPostContext"
 import { PostContext } from '../../contextStore/PostContext'
 import SearchIcon from "..//../assets/SearchIcon"
 import CloseIcon from "..//../assets/CloseIcon/CloseIcon"
-import { useHistory } from 'react-router'
+// import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import "./search.css"
 function Search() {
     const {allPost,setAllPost}=useContext(AllPostContext)
     const {setPostContent}=useContext(PostContext)
-    const history=useHistory()
+    const history=useNavigate()
     
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");

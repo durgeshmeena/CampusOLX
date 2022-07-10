@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/index.css";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
@@ -22,11 +23,21 @@ const msalInstance = new PublicClientApplication(msalConfig);
 /**
  * We recommend wrapping most or all of your components in the MsalProvider component. It's best to render the MsalProvider as close to the root as possible.
  */
-ReactDOM.render(
+
+const root = createRoot(document.getElementById("root"));
+root.render(
     <React.StrictMode>
         <MsalProvider instance={msalInstance}>
             <App />
         </MsalProvider>
-    </React.StrictMode>,
-    document.getElementById("root")
+    </React.StrictMode>
 );
+
+// ReactDOM.render(
+//     <React.StrictMode>
+//         <MsalProvider instance={msalInstance}>
+//             <App />
+//         </MsalProvider>
+//     </React.StrictMode>,
+//     document.getElementById("root")
+// );

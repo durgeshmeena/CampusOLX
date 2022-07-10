@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import Logo from "../../olx-logo.png";
 import "./Signup.css";
 import { Firebase } from "../../firebase/config";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import SignUpLoading from "../Loading/SignUpLoading";
 
 export default function Signup() {
-  const history = useHistory();
+  const history = useNavigate();
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [phone, setPhone] = useState("");

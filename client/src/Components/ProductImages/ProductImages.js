@@ -4,12 +4,16 @@ import React, {useState, useEffect} from "react"
 export default function ProductImages() {
     const [products, setProducts] = useState(null);
 
-    useEffect( async () => {
-      const res =  await fetch("/api/get/images")
-      const data = await res.json();
-      setProducts(data.products);
-      console.log(data.products);
-      console.log(data.message);    
+    useEffect(() => {
+      async function fetchProducts() {
+        const res =  await fetch("/api/get/images")
+        const data = await res.json();
+        setProducts(data.products);
+        console.log(data.products);
+        console.log(data.message);
+      }
+      fetchProducts();
+
     }, []);
 
     const createImage = (product) => {
