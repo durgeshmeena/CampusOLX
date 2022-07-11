@@ -3,6 +3,7 @@ import Heart from '../../assets/Heart'
 import {useHistory} from "react-router-dom";
 import {PostContext} from "../../contextStore/PostContext";
 import "./postcards.css"
+import CreateImage from "../CreateImage/CreateImage";
 
 function PostCards({product,index}) {
     let {setPostContent} = useContext(PostContext)//at the time of onClick on post ,the specified post item assigned to postContent by setPostContent function and it will be stored in a global context PostContext
@@ -18,7 +19,8 @@ function PostCards({product,index}) {
           <Heart></Heart>
         </div>
         <div className="image">
-          <img src={product.url} alt="" />
+          {/* <img src={product.url} alt="" /> */}
+          <img src={CreateImage(product)} alt="" />
         </div>
         <div className="content">
           <p className="rate">&#x20B9; {product.price}</p>

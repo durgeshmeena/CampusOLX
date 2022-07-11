@@ -1,12 +1,14 @@
-import React, { useState, Component } from "react";
+import React, { useEffect, useState, Component } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-import { useMsal } from "@azure/msal-react";
+import { useMsal, AuthenticatedTemplate, UnauthenticatedTemplate, useIsAuthenticated } from "@azure/msal-react";
 
 import * as mdb from 'mdb-react-ui-kit';
+import Header from "../Header/Header";
+import Sell from "../Sell/Sell";
 
-export default function Product() {
+function CreateProduct() {
 
     const { accounts } = useMsal();
     
@@ -133,3 +135,86 @@ export default function Product() {
         
     );
 }
+
+
+function LoginAlert() {
+
+    const history = useHistory();
+
+    useEffect(() => {
+        window.alert("Please Signin to continue");
+        history.push("/");
+    }, []);
+
+
+    return (
+        <div className="App">
+            <p>Please sign-in to see your profile information.</p>
+        </div>
+    );
+}
+
+const CheckSeller = () => {
+    const { accounts } = useMsal();
+    const [isSeller, setSeller] = useState(null);
+
+    useEffect( async() => {
+        const res = await fetch("/api/check/seller", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ _id: accounts[0].homeAccountId.split('.')[0] })
+        })
+        const seller = await res.json();
+        console.log(seller);
+        
+
+        if(seller.exist){
+            console.log("seller exists");
+            setSeller(true);
+        }
+        else{
+            console.log("seller does not exist");
+           
+            // function for alerting the user that he is not a seller
+            window.alert("You are not a seller");
+            history.push("/create/seller");
+        }
+
+    }, []);
+
+    return (
+        <div>
+            {isSeller ? CreateProduct() : <Sell />}
+        </div>
+    );
+
+    
+}
+
+
+function Product () {
+    const isAuthenticated = useIsAuthenticated();
+    console.log(isAuthenticated);
+    return (
+        <div>
+            <Header />
+
+            {/* <AuthenticatedTemplate>
+                {isAuthenticated && CheckSeller()}   
+            </AuthenticatedTemplate>
+
+            <UnauthenticatedTemplate>
+                {LoginAlert()}
+            </UnauthenticatedTemplate> */}
+
+            {
+                isAuthenticated ? CheckSeller() : LoginAlert()
+            }
+
+        </div>
+    );
+}
+
+export default Product;
