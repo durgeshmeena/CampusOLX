@@ -15,7 +15,8 @@ const createSeller = async(req, res) => {
     const newSeller = new Seller({_id, name, email, mobile, otherInfo });
     try {
         const savedSeller = await newSeller.save();
-        res.json({message: "seller created successfully", savedSeller});
+        // res.json({message: "seller created successfully", savedSeller});
+        res.status(200).json({message: "seller created successfully", savedSeller});
     }
     catch (err) {
         console.log(err);
@@ -24,22 +25,32 @@ const createSeller = async(req, res) => {
         }
         res.status(500).json({message: "error creating seller"});
     }
-    
 
-
-    // try{
-    //     // console.log(_id, typeof(_id));
-    //     const newSeller = new Seller({_id, name, email, mobile, otherInfo });
-    //     console.log(newSeller);
-    //     await newSeller.save();
-    //     return res.status(201).json({ message: "seller created successfully" });
-    // }
-    // catch(err){
-    //     return res.status(400).json({ message: err });
-    // }
-
-
-    
 }
-    
-module.exports = { createSeller };
+
+const checkSeller = async(req, res) => {
+    const { _id } = req.body;
+    console.log(req.body);
+
+    console.log(!_id);
+
+    try {
+        console.log("here");
+        const seller = await Seller.findOne({_id});
+        console.log(seller);
+        if(seller.length === 0){
+            console.log("seller not found");
+            return res.status(400).json({message: "seller does not exist", exist: false});
+        }
+        console.log("seller found");
+        res.status(200).json({message: "seller exists", exist: true});
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({message: "error checking seller"});
+    }
+}
+
+
+// export createSeller and checkSeller
+module.exports = { createSeller, checkSeller };
