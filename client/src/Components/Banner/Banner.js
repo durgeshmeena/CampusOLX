@@ -19,21 +19,21 @@ function Banner() {
             >
               {" "}
               <option value="null">Choose From Here</option>
-              <option value="Cars">Stationary</option>
-              <option value="Cameras & Lenses">Electonics</option>
-              <option value="Computers & Laptops">Musical Instruments</option>
-              <option value="Mobile Phones">Cycles</option>
-              <option value="Motorcycles">Mobiles and Laptops</option>
-              <option value="Tablets">Other Accessories</option>
+              <option value="Stationary">Stationary</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Musical Instruments">Musical Instruments</option>
+              <option value="Cycles">Cycles</option>
+              <option value="Mobiles and Laptops">Mobiles and Laptops</option>
+              <option value="Other Accessories">Other Accessories</option>
             </select>
           </div>
           <div className="otherQuickOptions">
             <span onClick={()=>setCategory("Stationary")} >Stationary</span>
-            <span onClick={()=>setCategory("Cameras & Lenses")} >Electonics</span>
-            <span onClick={()=>setCategory("Computers & Laptops")} >Musical Instruments</span>
-            <span onClick={()=>setCategory("Mobile Phones")} >Cycles</span>
-            <span onClick={()=>setCategory("Motorcycles")} >Mobiles and Laptops</span>
-            <span onClick={()=>setCategory("Tablets")} >Other Accessories</span>
+            <span onClick={()=>setCategory("Electronics")} >Electronics</span>
+            <span onClick={()=>setCategory("Musical Instruments")} >Musical Instruments</span>
+            <span onClick={()=>setCategory("Cycles")} >Cycles</span>
+            <span onClick={()=>setCategory("Mobiles and Laptops")} >Mobiles and Laptops</span>
+            <span onClick={()=>setCategory("Other Accessories")} >Other Accessories</span>
           </div>
         </div>
         <div className="banner">
