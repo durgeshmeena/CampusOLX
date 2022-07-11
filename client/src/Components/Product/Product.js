@@ -156,6 +156,7 @@ function LoginAlert() {
 
 const CheckSeller = () => {
     const { accounts } = useMsal();
+    const history = useHistory();
     const [isSeller, setSeller] = useState(null);
 
     useEffect( async() => {
@@ -170,23 +171,30 @@ const CheckSeller = () => {
         console.log(seller);
         
 
-        if(seller.exist){
-            console.log("seller exists");
-            setSeller(true);
-        }
-        else{
-            console.log("seller does not exist");
+        // if(seller.exist){
+        //     console.log("seller exists");
+        //     setSeller(true);
+        // }
+        // else{
+        //     console.log("seller does not exist");
            
-            // function for alerting the user that he is not a seller
-            window.alert("You are not a seller");
-            history.push("/create/seller");
-        }
+        //     // function for alerting the user that he is not a seller
+        //     window.alert("You are not a seller");
+        //     history.push("/create/seller");
+        // }
+        setSeller(seller.exist);
 
     }, []);
 
+    // if(isSeller !== null && isSeller === false){
+    //     window.alert("You are not a seller");
+    //     history.push("/create/seller");
+
+    // }
+
     return (
         <div>
-            {isSeller ? CreateProduct() : <Sell />}
+            {isSeller && CreateProduct()}
         </div>
     );
 

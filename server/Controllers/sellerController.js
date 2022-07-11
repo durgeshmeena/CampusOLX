@@ -47,7 +47,7 @@ const checkSeller = async(req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(500).json({message: "error checking seller"});
+        res.status(500).json({message: "error checking seller", exist: false});
     }
 }
 
