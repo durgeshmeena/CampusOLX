@@ -12,6 +12,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contextStore/AuthContext";
 import { Firebase } from "../../firebase/config";
 import Search from "../Search/Search";
+
+import { useIsAuthenticated } from "@azure/msal-react";
+import { SignInButton } from "../SignInButton";
+import { SignOutButton } from "../SignOutButton";
+
+
+
 function Header() {
   const{allPost}=useContext(AllPostContext)
   const{setPostContent}=useContext(PostContext)
@@ -44,6 +51,7 @@ function Header() {
      alert("No items found.., please search by product name");
   }
   const { user } = useContext(AuthContext);
+  const isAuthenticated = useIsAuthenticated();
   
   const logoutHandler = () => {
     Firebase.auth()
@@ -56,7 +64,9 @@ function Header() {
     <div className="headerParentDiv">
       <div className="headerChildDiv">
         <div className="brandName">
-          <OlxLogo></OlxLogo>
+          <Link to="/">
+            <OlxLogo />
+          </Link>
         </div>
         <div className="placeSearch">
           <input type="text" 
@@ -84,28 +94,14 @@ function Header() {
         <div className="productSearch">
           <Search />
         </div>
-        
-        <div className="language">
-          <span> ENGLISH </span>
-          <Arrow></Arrow>
+     
+        <div>
+          { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
         </div>
-        <div className="loginPage">
-          {user ? (
-            user.displayName
-          ) : (
-            <Link to="/login">
-              <span>Login</span>
-            </Link>
-          )}
-          <hr />
-        </div>
-        {user && (
-          <span onClick={logoutHandler} className="logout-span">
-            Logout
-          </span>
-        )}
+
         
-        <Link to="/create">
+        
+        <Link to="/create/product">
           {" "}
           <div className="sellMenu">
             <SellButton></SellButton>
