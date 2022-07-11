@@ -186,15 +186,16 @@ const CheckSeller = () => {
 
     }, []);
 
-    // if(isSeller !== null && isSeller === false){
-    //     window.alert("You are not a seller");
-    //     history.push("/create/seller");
+    if(isSeller !== null && isSeller === false){
+        window.alert("You are not a seller");
+        history.push("/create/seller");
+        return null
 
-    // }
+    }
 
     return (
         <div>
-            {isSeller && CreateProduct()}
+            {CreateProduct()}
         </div>
     );
 
