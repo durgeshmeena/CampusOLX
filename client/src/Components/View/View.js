@@ -4,7 +4,7 @@ import { Firebase } from "../../firebase/config";
 import { useHistory } from "react-router";
 import "./View.css";
 import CreateImage from "../CreateImage/CreateImage";
-
+import Chat from "../Chat/Chat";
 
 
 // function fetchSeller () {
@@ -73,6 +73,15 @@ function View() {
 					<div>
 						<img style={{ width: "40rem" }} src={CreateImage(postContent)} alt="" />
 					</div>
+					
+					<div className="chatContainer">
+						{
+							userDetails &&
+							<div>
+								<Chat postContent={postContent} userDetails={userDetails} />
+							</div>
+						}
+					</div>
 				</div>{" "}
 
 				<div className="rightSection">
@@ -96,13 +105,21 @@ function View() {
 							</div> 
 							:
 
-							<div className="contactDetails">
-								<p className="p-bold">Seller Details</p>
-								<p>Name: {userDetails.name}</p>
-								<p>Email: {userDetails.email}</p>
-								<p>Phone: {userDetails.mobile}</p>
-								<p>OtherInfo: {userDetails.otherInfo}</p>
+							<div className="sellerDetails">
+								<div className="contactDetails">
+									<p className="p-bold">Seller Details</p>
+									<p>Name: {userDetails.name}</p>
+									<p>Email: {userDetails.email}</p>
+									<p>Phone: {userDetails.mobile}</p>
+									<p>OtherInfo: {userDetails.otherInfo}</p>
+								</div>
+								{/* <div>
+									<Chat postContent={postContent} userDetails={userDetails} />
+								</div>									 */}
 							</div>
+
+							
+
 						}
 					</div>
 						

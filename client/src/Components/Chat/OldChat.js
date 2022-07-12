@@ -4,22 +4,16 @@ import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal, useIsAuthentic
 
 
 
-const InboxContainer = (props) => {
-
-    const {product, seller} = props;
-	// console.log(props, )
-	console.log(product, seller);
-
-	const { accounts } = useMsal();
-    const [user, setUser] = useState({
-        _id : accounts[0].homeAccountId.split('.')[0],
-        name: accounts[0].name,
-        email: accounts[0].username 
-    });
+const InboxContainer = () => {
 
     const talkjsContainer = createRef();
 
-
+    const { accounts } = useMsal();
+    const [user, setUser] = useState({
+        id : accounts[0].homeAccountId.split('.')[0],
+        name: accounts[0].name,
+        email: accounts[0].username 
+    });
   
     useEffect( async() => {   
   
@@ -28,10 +22,11 @@ const InboxContainer = (props) => {
           console.log("Talk is ready");
           console.log("user:", user);
           var me = new Talk.User({
-            id: user._id,
+            id: user.id,
             name: user.name,
             email: user.email,
-            role: "buyer"
+            welcomeMessage: "Hey there! How are you? :-)",
+            role: "booker"
           });
           
           window.talkSession = new Talk.Session({
@@ -40,17 +35,14 @@ const InboxContainer = (props) => {
           });
           
           var other = new Talk.User({
-            id: seller._id,
-            name: seller.name,
-            email: seller.email,
-            welcomeMessage: "Message me if want to know more?",
-            role: "seller"
+            id: parseInt(Math.random()*500000).toString(),
+            name: "Monu",
+            email: "demo@talkjs.com",
+            welcomeMessage: "Hey, how can I help?",
+            role: "booker"
           });
-  
-          var ConversationID = product._id + user._id + seller._id;
-          console.log("newConversationID:", ConversationID);
-
-          var conversation = talkSession.getOrCreateConversation(ConversationID);
+    
+          var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other));
           conversation.setParticipant(me);
           conversation.setParticipant(other);
           conversation.setAttributes({
@@ -76,16 +68,11 @@ const InboxContainer = (props) => {
 
 
 
-const Chat = (props) => {
- 	const {postContent, userDetails} = props;
-	// console.log(props, product, seller);
-	const product = postContent;
-	const seller = userDetails;
-
+const Chat = () => {
     return (
         <div >
             <AuthenticatedTemplate>
-                <InboxContainer product={product} seller={seller} />
+                <InboxContainer/>
             </AuthenticatedTemplate>
 
             <UnauthenticatedTemplate>
