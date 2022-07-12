@@ -14,6 +14,7 @@ const createSeller = async(req, res) => {
 
     
     try {
+        const newSeller = new Seller({_id, name, email, mobile, otherInfo });
         const savedSeller = await newSeller.save();
         // res.json({message: "seller created successfully", savedSeller});
         res.status(200).json({message: "seller created successfully", savedSeller});
