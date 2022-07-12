@@ -50,5 +50,4 @@ const checkSeller = async(req, res) => {
 }
 
 
-// export createSeller and checkSeller
 module.exports = { createSeller, checkSeller };

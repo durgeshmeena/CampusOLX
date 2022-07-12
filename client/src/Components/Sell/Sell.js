@@ -63,9 +63,6 @@ function Seller() {
         const data = await res.json();
         console.log(data);
 
-        // .then((res) => res.json())
-        // .then((dataS) => setData(dataS.message));
-        
         setData(data.message);
         window.alert(data.message);
         if(res.status === 200){
@@ -124,34 +121,6 @@ function Seller() {
         );
 }
 
-// function LoginAlert() {
-//     const isAuthenticated = useIsAuthenticated();
-//     const history = useHistory();
-
-//     useEffect(() => {
-//         console.log(isAuthenticated);
-//         if (isAuthenticated) {
-//             alert("You are logged in!");
-//         }
-        
-//     }
-//     , [isAuthenticated]);
-
-    
-//     console.log("LoginAlert");
-//     // useEffect(() => {
-//     //     window.alert("Please Signin to continue");
-//     // }, []);
-
-//     window.alert("Please Signin to continue");
-//     return history.push("/");   
-
-//     // return (
-//     //     <div className="App">
-//     //         <p>Please sign-in to see your profile information.</p>
-//     //     </div>
-//     // );
-// }
 
 
 
