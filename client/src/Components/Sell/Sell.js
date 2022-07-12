@@ -1,10 +1,11 @@
 import React, { useState, Component, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
+import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal, useIsAuthenticated } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
 import { callMsGraph } from "../../graph";
 import Button from "react-bootstrap/Button";
 import Header from "../../Components/Header/Header";
+import "./Sell.css";
 
 
 import {
@@ -19,6 +20,7 @@ import {
 
 
 function Seller() {
+    console.log("Seller");
 
     const history = useHistory();
 
@@ -79,8 +81,8 @@ function Seller() {
     return (
        
         
-            <div >
-                <div className="d-lg-inline-flex">
+            <div className="createForm">
+                <div className="d-lg-inline-flex flex-column" >
                     <form method="POST" className="register-form">
                         <MDBInput name="name" className='mb-4' id='form1Example1'  label='Name' readonly
                             value={user.name}
@@ -107,7 +109,7 @@ function Seller() {
 
 
                         <MDBBtn type='submit' name="seller" onClick={PostData} block>
-                            Sign in
+                            Create Seller
                         </MDBBtn>
                     </form> 
 
@@ -122,12 +124,44 @@ function Seller() {
         );
 }
 
+// function LoginAlert() {
+//     const isAuthenticated = useIsAuthenticated();
+//     const history = useHistory();
+
+//     useEffect(() => {
+//         console.log(isAuthenticated);
+//         if (isAuthenticated) {
+//             alert("You are logged in!");
+//         }
+        
+//     }
+//     , [isAuthenticated]);
+
+    
+//     console.log("LoginAlert");
+//     // useEffect(() => {
+//     //     window.alert("Please Signin to continue");
+//     // }, []);
+
+//     window.alert("Please Signin to continue");
+//     return history.push("/");   
+
+//     // return (
+//     //     <div className="App">
+//     //         <p>Please sign-in to see your profile information.</p>
+//     //     </div>
+//     // );
+// }
+
+
+
 function LoginAlert() {
 
     const history = useHistory();
 
     useEffect(() => {
         window.alert("Please Signin to continue");
+        history.push("/");
     }, []);
 
 
@@ -138,22 +172,22 @@ function LoginAlert() {
     );
 }
 
+
 function Sell () {
+    const isAuthenticated = useIsAuthenticated();
+    console.log(isAuthenticated);
     return (
         <div>
             <Header />
-            <AuthenticatedTemplate>
-             
-                <Seller />
-                    
-            </AuthenticatedTemplate>
 
-            <UnauthenticatedTemplate>
-                <LoginAlert />
-            </UnauthenticatedTemplate>
+            {
+                isAuthenticated ? Seller() : LoginAlert()
+            }
 
         </div>
     );
 }
+
+
 
 export default Sell

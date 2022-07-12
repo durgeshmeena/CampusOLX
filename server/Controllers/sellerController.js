@@ -32,15 +32,13 @@ const checkSeller = async(req, res) => {
     const { _id } = req.body;
     console.log(req.body);
 
-    console.log(!_id);
-
     try {
         console.log("here");
         const seller = await Seller.findOne({_id});
         console.log(seller);
-        if(seller.length === 0){
+        if(!seller){
             console.log("seller not found");
-            return res.status(400).json({message: "seller does not exist", exist: false});
+            return res.json({message: "seller does not exist", exist: false});
         }
         console.log("seller found");
         res.status(200).json({message: "seller exists", exist: true});

@@ -7,6 +7,7 @@ import { useMsal, AuthenticatedTemplate, UnauthenticatedTemplate, useIsAuthentic
 import * as mdb from 'mdb-react-ui-kit';
 import Header from "../Header/Header";
 import Sell from "../Sell/Sell";
+import "./Product.css";
 
 function CreateProduct() {
 
@@ -83,56 +84,77 @@ function CreateProduct() {
 
 
     return (
-        <div className="d-lg-inline-flex">
-            <form method="POST" className="register-form">
-                <mdb.MDBInput name="name" className='mb-4' id='form1Example1'  label='Product Name' 
-                    onChange={handleInput}
-                />
-                
-                
-
-                <mdb.MDBInput list ="category" name="category" className="mb-4" label="Product Category" autoComplete='off' onChange={handleInput}/>
-                    <datalist id="category">
-                        <option value="Stationary">Stationary</option>
-                        <option value="Electronics">Electronics</option>
-                        <option value="Musical Instruments">Musical Instruments</option>
-                        <option value="Cycles">Cycles</option>
-                        <option value="Other Accessories">Other Accessories</option>
-                    </datalist>
-           
-
-
-                <mdb.MDBInput name="price" id='priceproduct' type='number' className='mb-4'  label='Price' 
-                    onChange={handleInput}
-                />
-
-
-                <mdb.MDBTextArea  name="description" className='mb-4' label='Message' id='textAreaExample' rows={3} 
-                    onChange={handleInput}
-                />
-
-                
-
-                <div style={{ width: "22rem" }}>
-                    <mdb.MDBFile name="file" className='mb-4' id='customFile' accept="image/x-png,image/jpeg,image/gif"
-                        onChange={handleFile}
+        <div className="createForm">
+            <div className="d-lg-inline-flex flex-column">
+                <form method="POST" className="register-form">
+                    <mdb.MDBInput name="name" className='mb-4' id='form1Example1'  label='Product Name' 
+                        onChange={handleInput}
                     />
+                    
+                    
+
+                    <mdb.MDBInput list ="category" name="category" className="mb-4" label="Product Category" autoComplete='off' onChange={handleInput}/>
+                        <datalist id="category">
+                            <option value="Stationary">Stationary</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Musical Instruments">Musical Instruments</option>
+                            <option value="Cycles">Cycles</option>
+                            <option value="Other Accessories">Other Accessories</option>
+                        </datalist>
+            
+
+
+                    <mdb.MDBInput name="price" id='priceproduct' type='number' className='mb-4'  label='Price' 
+                        onChange={handleInput}
+                    />
+
+
+                    <mdb.MDBTextArea  name="description" className='mb-4' label='Message' id='textAreaExample' rows={3} 
+                        onChange={handleInput}
+                    />
+
+                    
+
+                    <div style={{ width: "22rem" }}>
+                        <mdb.MDBFile name="file" className='mb-4' id='customFile' accept="image/x-png,image/jpeg,image/gif"
+                            onChange={handleFile}
+                        />
+                    </div>
+
+                    <br/>
+                    <img src={file ? URL.createObjectURL(file) : ""}  alt="product" className="img-fluid" />
+
+                    <mdb.MDBBtn type='submit' name="seller" onClick={handleSubmit} block>
+                        Create Product
+                    </mdb.MDBBtn>
+                </form> 
+
+                <div className="App">
+                    <p>{!data2 ? "Loading..." : data2}</p>
                 </div>
 
-                <br/>
-                <img src={file ? URL.createObjectURL(file) : ""}  alt="product" className="img-fluid" />
-
-                <mdb.MDBBtn type='submit' name="seller" onClick={handleSubmit} block>
-                    Create Product
-                </mdb.MDBBtn>
-            </form> 
-
-            <div className="App">
-                <p>{!data2 ? "Loading..." : data2}</p>
             </div>
-
         </div>
+
         
+    );
+}
+
+
+function SellerAlert() {
+
+    const history = useHistory();
+
+    useEffect(() => {
+        window.alert("You are not a seller");
+        history.push("/create/seller");
+    }, []);
+
+
+    return (
+        <div className="App">
+            <p>Please sign-in to see your profile information.</p>
+        </div>
     );
 }
 
@@ -154,7 +176,8 @@ function LoginAlert() {
     );
 }
 
-const CheckSeller = () => {
+
+function CheckSeller () {
     const { accounts } = useMsal();
     const history = useHistory();
     const [isSeller, setSeller] = useState(null);
@@ -169,38 +192,30 @@ const CheckSeller = () => {
         })
         const seller = await res.json();
         console.log(seller);
-        
-
-        // if(seller.exist){
-        //     console.log("seller exists");
-        //     setSeller(true);
-        // }
-        // else{
-        //     console.log("seller does not exist");
-           
-        //     // function for alerting the user that he is not a seller
-        //     window.alert("You are not a seller");
-        //     history.push("/create/seller");
-        // }
         setSeller(seller.exist);
 
     }, []);
 
-    if(isSeller !== null && isSeller === false){
-        window.alert("You are not a seller");
-        history.push("/create/seller");
-        return null
+    // if(isSeller !== null && isSeller === false){
+    //     window.alert("You are not a seller");
+    //     history.push("/create/seller");
+    //     return null
 
-    }
+    // }
 
     return (
         <div>
-            {CreateProduct()}
+            {
+            isSeller === null ? <div className="App">
+                    <p>Loading...</p>
+                    </div> : 
+                    isSeller === false ? <SellerAlert /> : <CreateProduct />
+            }
         </div>
     );
-
     
 }
+
 
 
 function Product () {
@@ -209,14 +224,6 @@ function Product () {
     return (
         <div>
             <Header />
-
-            {/* <AuthenticatedTemplate>
-                {isAuthenticated && CheckSeller()}   
-            </AuthenticatedTemplate>
-
-            <UnauthenticatedTemplate>
-                {LoginAlert()}
-            </UnauthenticatedTemplate> */}
 
             {
                 isAuthenticated ? CheckSeller() : LoginAlert()
