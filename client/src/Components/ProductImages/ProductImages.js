@@ -8,7 +8,8 @@ export default function ProductImages() {
       const res =  await fetch("/api/get/images")
       const data = await res.json();
       setProducts(data.products);
-      console.log(data.products);
+      // console.log(data.products);
+      // console.log(data.products[0]._id, typeof(data.products[0]._id,  data.products[0]._id.toString()));
       console.log(data.message);    
     }, []);
 
