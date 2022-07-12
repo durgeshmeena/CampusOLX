@@ -45,9 +45,10 @@ const addProduct = async (req, res)=>{
         if(err) { console.log(err) }
         else { console.log('file deleted') }
     });
-    const product = new Product({name, category, price, description,image,seller});
+    
     // console.log(product);
     try{
+        const product = new Product({name, category, price, description,image,seller});
         const savedProduct = await product.save();
         res.json({message:"Product added successfully"});
     }

@@ -12,7 +12,7 @@ const createSeller = async(req, res) => {
         .json({ message: "Please enter all requiured fields" });
     }
 
-    const newSeller = new Seller({_id, name, email, mobile, otherInfo });
+    
     try {
         const savedSeller = await newSeller.save();
         // res.json({message: "seller created successfully", savedSeller});
@@ -38,14 +38,14 @@ const checkSeller = async(req, res) => {
         console.log(seller);
         if(!seller){
             console.log("seller not found");
-            return res.json({message: "seller does not exist", exist: false});
+            return res.json({message: "seller does not exist", exist: false, seller: null});
         }
         console.log("seller found");
-        res.status(200).json({message: "seller exists", exist: true});
+        res.status(200).json({message: "seller exists", exist: true, seller});
     }
     catch (err) {
         console.log(err);
-        res.status(500).json({message: "error checking seller", exist: false});
+        res.status(500).json({message: "error checking seller", exist: false, seller: null});
     }
 }
 
