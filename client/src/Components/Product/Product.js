@@ -52,7 +52,7 @@ function CreateProduct() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(product);
-        const { name,category, price, description} = product;
+        const { name,category, price, description, seller} = product;
         if( !name || !category || !price || !description || !file){
             window.alert("Please fill all the fields");
         }
@@ -64,6 +64,7 @@ function CreateProduct() {
             formData.append('price', price);
             formData.append('description', description);
             formData.append('image', file);
+            formData.append('seller', seller);
             
 
             const res = await fetch("/api/add/product", {
@@ -75,6 +76,10 @@ function CreateProduct() {
 
             
             setData(data.message);
+            if(res.status === 200){
+                window.alert(data.message);
+                window.location.reload();
+            }
         }
 
 
@@ -122,7 +127,7 @@ function CreateProduct() {
                     </div>
 
                     <br/>
-                    <img src={file ? URL.createObjectURL(file) : ""}  alt="product" className="img-fluid" />
+                    <img style={{ width: "22rem" }} src={file ? URL.createObjectURL(file) : ""}  alt="product" className="img-fluid" />
 
                     <mdb.MDBBtn type='submit' name="seller" onClick={handleSubmit} block>
                         Create Product

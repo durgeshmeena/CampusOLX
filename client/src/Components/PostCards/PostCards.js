@@ -11,26 +11,27 @@ function PostCards({product,index}) {
     const history=useHistory()//at the time of onClick on post , we want redirect to the view post page
 
     return (
-      <div className="card" key={index} onClick={()=>{
-        setPostContent(product)
-        history.push("/view")
-      }}>
-        <div className="favorite">
-          <Heart></Heart>
-        </div>
-        <div className="image">
-          {/* <img src={product.url} alt="" /> */}
-          <img src={CreateImage(product)} alt="" />
-        </div>
-        <div className="content">
-          <p className="rate">&#x20B9; {product.price}</p>
-          <span className="category"> {product.category} </span>
-          <p className="name"> {product.name}</p>
-        </div>
-        <div className="date">
-          <span>{product.createdAt}</span>
-        </div>
-      </div>
+		<div className="card" key={index} 
+			onClick={()=>{
+				setPostContent(product)
+				history.push("/view")
+			}}>
+			<div className="favorite">
+				<Heart></Heart>
+			</div>
+			<div className="image">
+				{/* <img src={product.url} alt="" /> */}
+				<img src={CreateImage(product)} alt="" />
+			</div>
+			<div className="content">
+				<p className="rate">&#x20B9; {product.price}</p>
+				<span className="category"> {product.category} </span>
+				<p className="name"> {product.name}</p>
+			</div>
+			<div className="date">
+				<span>{product.createdAt}</span>
+			</div>
+		</div>
        
     )
 }

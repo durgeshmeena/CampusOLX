@@ -17,47 +17,11 @@ function Posts() {
     setLoading(true);
     setLoading2(true)
 
-    // Firebase.firestore() //retreving all posts from firebase in descending order
-    //   .collection("products")
-    //   .orderBy("createdAt", "desc")
-    //   .get()
-    //   .then((snapshot) => {
-    //     let allPostsDescendingOder = snapshot.docs.map((product) => {
-    //       return {
-    //         ...product.data(),
-    //         id: product.id,
-    //       };
-    //     });
-    //     setPosts2(allPostsDescendingOder); //set to post
-    //     setAllPost(allPostsDescendingOder);
-    //     setLoading(false);
-    //   });
-
     const res =  await fetch("/api/get/images")
     const data = await res.json();
     setPosts(data.products);
     setAllPost(data.products);
     setLoading(false);
-
-
-
-
-    // Firebase.firestore() //retreving all posts from firebase in asecnding order of date
-    //   .collection("products")
-    //   .orderBy("createdAt", "asc")
-    //   .get()
-    //   .then((snapshot) => {
-    //     let allPostsAscendingOder = snapshot.docs.map((product) => {
-    //       return {
-    //         ...product.data(),
-    //         id: product.id,
-    //       };
-    //     });
-    //     setPosts(allPostsAscendingOder);
-    //     setLoading2(false)
-        
-    //   });
-
 
 
     const res2 =  await fetch("/api/get/images")
