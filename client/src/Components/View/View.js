@@ -5,8 +5,9 @@ import { useHistory } from "react-router";
 import "./View.css";
 import CreateImage from "../CreateImage/CreateImage";
 import Chat from "../Chat/Chat";
+import $ from 'jquery'; 
 
-
+import ChatImage1 from "../../assets/chat.svg"
 // function fetchSeller () {
 
 //     const res = await fetch("/api/check/seller", {
@@ -64,6 +65,20 @@ function View() {
 	// 		}
 	// 	)
 
+	const bg = {
+		"background-image": ChatImage1 
+	}
+
+	const openChat = (e)=>{
+		// $('chat_launcher').class
+		
+		e.preventDefault();
+
+
+		
+
+	}
+
 
 	return (
 		
@@ -74,7 +89,7 @@ function View() {
 						<img style={{ width: "40rem" }} src={CreateImage(postContent)} alt="" />
 					</div>
 					
-					<div className="chatContainer">
+					<div className="chatContainer" id="chatContainer">
 						{
 							userDetails &&
 							<div>
@@ -107,11 +122,16 @@ function View() {
 
 							<div className="sellerDetails">
 								<div className="contactDetails">
-									<p className="p-bold">Seller Details</p>
+									<div className="d-inline-flex flex-row">
+										<p className="p-bold">Seller Details</p>
+										<a href="#" className="chat_launcher closed" id="chat_launcher" onClick={openChat} ></a>
+									</div>
+									
 									<p>Name: {userDetails.name}</p>
 									<p>Email: {userDetails.email}</p>
 									<p>Phone: {userDetails.mobile}</p>
 									<p>OtherInfo: {userDetails.otherInfo}</p>
+				
 								</div>
 								{/* <div>
 									<Chat postContent={postContent} userDetails={userDetails} />
@@ -123,13 +143,7 @@ function View() {
 						}
 					</div>
 						
-					{/* {userDetails &&
-					<div className="contactDetails">
-						<p className="p-bold">Seller details</p>
-						<p>Name : {userDetails.name}</p>
-						<p>Phone : {userDetails.phone}</p>
-					</div>
-					} */}
+				
 
 				</div>
 			</div>

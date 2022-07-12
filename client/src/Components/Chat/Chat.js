@@ -54,7 +54,7 @@ const InboxContainer = (props) => {
           conversation.setParticipant(me);
           conversation.setParticipant(other);
           conversation.setAttributes({
-            subject: "This is a testing conversation"
+            subject: product.name
           });
           
           var inbox = talkSession.createInbox({selected: conversation});
@@ -65,7 +65,7 @@ const InboxContainer = (props) => {
     }, []);
   
     const dims = {
-        height: "45rem",
+        height: "36rem",
     }
 
     return (
