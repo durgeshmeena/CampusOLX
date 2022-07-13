@@ -38,7 +38,7 @@ const InboxContainer = () => {
 				
 				var other = new Talk.User({
 					id: parseInt(Math.random()*500000).toString(),
-					name: "Monu Kumar",
+					name: "Monu Kuma",
 					email: "demo@talkjs.com",
 					photoUrl: "https://avatars.githubusercontent.com/u/57959076?v=4",
 					welcomeMessage: "Hey, how can I help?",
