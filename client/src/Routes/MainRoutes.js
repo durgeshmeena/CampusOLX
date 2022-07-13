@@ -13,6 +13,7 @@ import Admin from '../Pages/Admin'
 import NotFound from '../Components/NotFound/NotFound'
 import Sell from '../Components/Sell/Sell'
 import Product from '../Components/Product/Product'
+import MyProducts from '../Components/MyProducts/MyProducts'
 
 function MainRoutes() {
     return (
