@@ -27,6 +27,12 @@ It is build using MERN Stack ( [MongoDB](https://www.mongodb.com/), [Express](ht
     npm install
 this will install all required packages written in package.json file.
 
-then run
+then in client folder
 
-    node server.js
+    npm start
+
+ #### Now go to your browser and load http://localhost:3000 
+ ##### That’s it, You have successfully run this project on your machine
+
+##
+## Home Page 
