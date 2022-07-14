@@ -23,7 +23,7 @@ It is build using MERN Stack ( [MongoDB](https://www.mongodb.com/), [Express](ht
    > 
      6.14.6
   
-  #### Install Dependencies 
+  #### Install Dependencies in `server` and `client` folder
     npm install
 this will install all required packages written in package.json file.
 
