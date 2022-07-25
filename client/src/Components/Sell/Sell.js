@@ -1,9 +1,7 @@
-import React, { useState, Component, useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal, useIsAuthenticated } from "@azure/msal-react";
-import { loginRequest } from "../../authConfig";
-import { callMsGraph } from "../../graph";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from "react";
+import {useHistory } from "react-router-dom";
+import { useMsal, useIsAuthenticated } from "@azure/msal-react";
+
 import Header from "../../Components/Header/Header";
 import "./Sell.css";
 

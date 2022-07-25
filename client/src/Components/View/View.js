@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PostContext } from "../../contextStore/PostContext";
-import { Firebase } from "../../firebase/config";
 import { useHistory } from "react-router";
 import "./View.css";
 import CreateImage from "../CreateImage/CreateImage";
