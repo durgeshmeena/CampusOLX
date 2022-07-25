@@ -41,10 +41,24 @@ then in client folder
 ## Search Feature
 ![Screenshot (178)](https://user-images.githubusercontent.com/57959076/178921068-12293790-66d3-429f-aaa3-18eaa1fc8da5.png)
 ##
-## Create Product
-![Screenshot (177)](https://user-images.githubusercontent.com/57959076/178921092-9f3e03ea-c01e-483b-883d-697217cf8ccc.png)
+## Microsoft Login
+![image](https://user-images.githubusercontent.com/58581435/180763870-82459e2e-45a1-4136-a122-c445e423c177.png)
 ##
 ## Sign in to Sell
 ![Screenshot (176)](https://user-images.githubusercontent.com/57959076/178921100-9d19aec3-3173-41a9-b3da-78ad404cbb76.png)
 ##
-## Chat with Seller![Screenshot (179)](https://user-images.githubusercontent.com/57959076/178921949-c0fdd259-e0a3-4a4f-88da-7cdf08b990fd.png)
+## Register as Seller
+![image](https://user-images.githubusercontent.com/58581435/180764146-b132d5fa-05f8-43c0-a66f-60b0ee70726d.png)
+![image](https://user-images.githubusercontent.com/58581435/180764283-a9768868-8163-4f1f-8fe7-52ebd385a219.png)
+
+##
+## Create Product
+![Screenshot (177)](https://user-images.githubusercontent.com/57959076/178921092-9f3e03ea-c01e-483b-883d-697217cf8ccc.png)
+##
+## Chat with Seller
+![Screenshot (179)](https://user-images.githubusercontent.com/57959076/178921949-c0fdd259-e0a3-4a4f-88da-7cdf08b990fd.png)
+##
+## Admin Panel 
+![image](https://user-images.githubusercontent.com/58581435/180763161-8f5ac642-5fe6-4f61-88cc-df9dd0681a6d.png)
+
+
