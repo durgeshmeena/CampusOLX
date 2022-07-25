@@ -18,7 +18,7 @@ export default function Admin() {
         const status = await adminStatus.status;
         if(status === 200){
             
-            setSrc("http://localhost:5000/admin");
+            setSrc(window.location.origin+"/admin");
         }
 
     } , []);
