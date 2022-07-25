@@ -36,3 +36,15 @@ then in client folder
 
 ##
 ## Home Page 
+![Screenshot (175)](https://user-images.githubusercontent.com/57959076/178921105-5d33b124-0175-4ecd-bdf4-853659ba12d5.png)
+##
+## Search Feature
+![Screenshot (178)](https://user-images.githubusercontent.com/57959076/178921068-12293790-66d3-429f-aaa3-18eaa1fc8da5.png)
+##
+## Create Product
+![Screenshot (177)](https://user-images.githubusercontent.com/57959076/178921092-9f3e03ea-c01e-483b-883d-697217cf8ccc.png)
+##
+## Sign in to Sell
+![Screenshot (176)](https://user-images.githubusercontent.com/57959076/178921100-9d19aec3-3173-41a9-b3da-78ad404cbb76.png)
+##
+## Chat with Seller![Screenshot (179)](https://user-images.githubusercontent.com/57959076/178921949-c0fdd259-e0a3-4a4f-88da-7cdf08b990fd.png)
