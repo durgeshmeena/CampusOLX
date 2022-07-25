@@ -1,6 +1,6 @@
 # [**IITG CampusOLX**](https://iitg-c-olx.herokuapp.com/)
 
-IITG CampusOLX <br>
+[IITG CampusOLX](https://durgeshmeena.github.io/CampusOLX/) <br>
 An application for buying and selling used items that are no longer needed by them and turn some no longer needed items into money.
 It is build using MERN Stack ( [MongoDB](https://www.mongodb.com/), [Express](https://expressjs.com), [React](https://reactjs.org/), [Nodejs](https://nodejs.org)).
 
