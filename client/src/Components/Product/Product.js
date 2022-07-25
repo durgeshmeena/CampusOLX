@@ -1,12 +1,10 @@
 import React, { useEffect, useState, Component } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 
 import { useMsal, AuthenticatedTemplate, UnauthenticatedTemplate, useIsAuthenticated } from "@azure/msal-react";
 
 import * as mdb from 'mdb-react-ui-kit';
 import Header from "../Header/Header";
-import Sell from "../Sell/Sell";
 import "./Product.css";
 
 function CreateProduct() {

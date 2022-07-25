@@ -14,11 +14,11 @@ export default function Admin() {
     }
 
     useEffect( async () => {
-        const adminStatus = await fetch("/admin");
+        const adminStatus = await fetch("/server/admin");
         const status = await adminStatus.status;
         if(status === 200){
             
-            setSrc(window.location.origin+"/admin");
+            setSrc(window.location.origin+"/server/admin");
         }
 
     } , []);

@@ -11,7 +11,7 @@ AdminBro.registerAdapter(AdminBroMongoose);
 
 const AdminBroOptions = {
     resources: [Seller, Product],
-    rootPath: '/admin',
+    rootPath: '/server/admin',
 }
 
 
