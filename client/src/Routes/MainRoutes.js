@@ -22,30 +22,18 @@ function MainRoutes() {
                 <Route exact path="/">
                     <Home/>
                 </Route>
-                <Route path="/signup">
-                    <Signup/>
-                </Route>
-                <Route path="/login">
-                    <Login/>
-                </Route>
-                {/* <Route path="/create">
-                    <CreatePost/>
-                </Route> */}
+                
                 <Route path="/view">
                     <ViewPost/>
                 </Route>
                 <Route path="/viewmore">
                     <ViewMore/>
                 </Route>
-                <Route path="/auth">
+                {/* <Route path="/auth">
                     <PageAuth/>
-                </Route>
-                <Route path="/back">
-                    <Back/>
-                </Route>
-                <Route path="/chat">
-                    <Chat/>
-                </Route>
+                </Route> */}
+                
+                
                 <Route path="/admin">
                     <Admin/>
                 </Route>

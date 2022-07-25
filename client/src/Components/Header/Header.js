@@ -9,8 +9,8 @@ import Arrow from "../../assets/Arrow";
 import SellButton from "../../assets/SellButton";
 import SellButtonPlus from "../../assets/SellButtonPlus";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../contextStore/AuthContext";
-import { Firebase } from "../../firebase/config";
+
+
 import Search from "../Search/Search";
 
 import { useIsAuthenticated } from "@azure/msal-react";
@@ -50,16 +50,10 @@ function Header() {
   const handleEmptyClick=()=>{
      alert("No items found.., please search by product name");
   }
-  const { user } = useContext(AuthContext);
+ 
   const isAuthenticated = useIsAuthenticated();
   
-  const logoutHandler = () => {
-    Firebase.auth()
-      .signOut()
-      .then(() => {
-        history.push("/login");
-      });
-  };
+  
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
