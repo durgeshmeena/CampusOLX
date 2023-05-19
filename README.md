@@ -1,4 +1,4 @@
-# [**IITG CampusOLX**](https://iitg-c-olx.herokuapp.com/)
+# [**IITG CampusOLX**](https://iitg-campus-olx.onrender.com/)
 
 [IITG CampusOLX](https://durgeshmeena.github.io/CampusOLX/) <br>
 An application for buying and selling used items that are no longer needed by them and turn some no longer needed items into money.
